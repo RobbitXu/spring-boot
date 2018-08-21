@@ -2,10 +2,10 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
 
     <!--日志上下文-->
-    <contextName>saas-area-server</contextName>
+    <contextName>spring-boot</contextName>
     <!--日记文件路径-->
-    <property name="log.path" value="/data/applogs"/>
-    <property name="logback.appname" value="area-server"/>
+    <property name="log.path" value="d:/data/applogs"/>
+    <property name="logback.appname" value="spring-boot"/>
 
 
     <!--控制台输出-->
@@ -46,7 +46,7 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间-->
             <fileNamePattern>${log.path}/${logback.appname}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-            <!--只保留最近90天的日志-->
+            <!--只保留最近60天的日志-->
             <maxHistory>60</maxHistory>
             <!--用来指定日志文件的上限大小，那么到了这个值，就会删除旧的日志-->
             <totalSizeCap>30GB</totalSizeCap>
