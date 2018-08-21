@@ -6,5 +6,4 @@ target/
 *.jar
 
 *.iml
-.idea/*
 .idea/
