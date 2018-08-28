@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weimob.area.mapper.AreaInfoMapper" >
+
+    <resultMap id="BaseResultMap" type="com.spring.bean.AreaInfo" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="area_code" property="areaCode" jdbcType="VARCHAR" />
+        <result column="parent_code" property="parentCode" jdbcType="VARCHAR" />
+        <result column="area_name" property="areaName" jdbcType="VARCHAR" />
+        <result column="level_type" property="levelType" jdbcType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="is_delete" property="delete" jdbcType="INTEGER" />
+    </resultMap>
+
+
+    <sql id="Base_Column_List" >
+        `id`, `area_code`, `parent_code`, `area_name`, `level_type`, `create_time`, `update_time`, `is_delete`
+    </sql>
+
+
+    <select id="queryAreaInfoById"  resultMap="BaseResultMap"   parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from t_area_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="queryAll"  resultMap="BaseResultMap"   parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from t_area_info
+    </select>
+
+</mapper>

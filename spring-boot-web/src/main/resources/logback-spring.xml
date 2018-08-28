@@ -52,6 +52,16 @@
             <totalSizeCap>30GB</totalSizeCap>
             <MaxFileSize>200MB</MaxFileSize>
         </rollingPolicy>
+
+
+        <!--滚动策略，按照时间滚动 TimeBasedRollingPolicy-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+        <!--<FileNamePattern>${logback.path}/info.${logback.appname}.%d{yyyy-MM-dd}.log</FileNamePattern>-->
+        <!--<maxHistory>60</maxHistory>-->
+        <!--<totalSizeCap>1GB</totalSizeCap>-->
+        <!--</rollingPolicy>-->
+
+
         <!--日志输出编码格式化-->
         <encoder>
             <charset>UTF-8</charset>
