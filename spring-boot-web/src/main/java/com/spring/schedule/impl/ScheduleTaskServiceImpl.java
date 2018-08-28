@@ -33,7 +33,7 @@ public class ScheduleTaskServiceImpl  {
 
     }
 
-    @Scheduled(fixedRate = 5*1000)
+//    @Scheduled(fixedRate = 5*1000)
     public void reportCurrentTimeForFixedRate() {
         try {
             Thread.sleep(8 * 1000L);

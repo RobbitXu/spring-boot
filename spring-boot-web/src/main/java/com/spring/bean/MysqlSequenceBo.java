@@ -11,8 +11,8 @@ import java.util.Date;
  * Created by admin on 2018/8/28.
  */
 @Data
-@Entity
-@Table(name="t_pub_sequence")
+//@Entity
+//@Table(name="t_pub_sequence")
 public class MysqlSequenceBo {
 
     /**

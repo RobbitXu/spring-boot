@@ -15,13 +15,13 @@
         delete from t_pub_sequence
         where SEQ_NAME = #{seqName,jdbcType=VARCHAR}
     </delete>
-    <insert id="createSequence" parameterType="com.xxxxx.core.sequence.impl.MysqlSequenceBo" >
+    <insert id="createSequence" parameterType="com.spring.bean.MysqlSequenceBo" >
         insert into t_pub_sequence (SEQ_NAME,SEQ_VALUE,MIN_VALUE,MAX_VALUE,STEP,TM_CREATE)
         values (#{seqName,jdbcType=VARCHAR}, #{seqValue,jdbcType=BIGINT},
         #{minValue,jdbcType=BIGINT}, #{maxValue,jdbcType=BIGINT}, #{step,jdbcType=BIGINT},
         now())
     </insert>
-    <update id="updSequence" parameterType="com.xxxxx.core.sequence.impl.MysqlSequenceBo" >
+    <update id="updSequence" parameterType="com.spring.bean.MysqlSequenceBo" >
         update t_pub_sequence
         set SEQ_VALUE = #{newValue,jdbcType=BIGINT}
         where SEQ_NAME = #{seqName,jdbcType=VARCHAR} and SEQ_VALUE = #{oldValue,jdbcType=BIGINT}

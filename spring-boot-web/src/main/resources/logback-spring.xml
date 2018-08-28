@@ -4,7 +4,7 @@
     <!--日志上下文-->
     <contextName>spring-boot</contextName>
     <!--日记文件路径-->
-    <property name="log.path" value="d:/data/applogs"/>
+    <property name="log.path" value="d:/log/"/>
     <property name="logback.appname" value="spring-boot"/>
 
 

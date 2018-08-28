@@ -1,6 +1,8 @@
 package com.spring.service.impl;
 
+import com.spring.factory.MysqlSequenceFactory;
 import com.spring.service.MysqlSequence;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**

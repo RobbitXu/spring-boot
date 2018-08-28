@@ -27,4 +27,9 @@ public interface AreaInfoRepository extends JpaRepository<AreaInfo,Integer> {
     @Query("update AreaInfo as areaInfo set areaInfo.areaName = :areaName where areaInfo.areaCode = :areaCode")
     Integer updateAreaInfo(@Param("areaCode") String areaCode, @Param("areaName") String areaName);
 
+
+    @Query(value = "select areaInfo.areaCode, areaInfo.parentCode,areaInfo.areaName,areaInfo.levelType from AreaInfo as areaInfo where areaInfo.areaCode = :areaCode")
+    List<AreaInfo> queryByAreaCode(@Param("areaCode") String areaCode);
+
+
 }
