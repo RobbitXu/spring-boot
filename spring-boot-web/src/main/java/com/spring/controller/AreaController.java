@@ -5,6 +5,7 @@ import com.spring.controller.base.BaseController;
 import com.spring.service.AreaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +38,7 @@ public class AreaController extends BaseController {
     }
 
     @RequestMapping(value = "/queryAreaInfoById")
+//    @Cacheable(value="com.spring.area")
     public AreaInfo queryAreaInfoById(@RequestParam("id") Integer id){
         return  areaService.queryAreaInfoById(id);
     }

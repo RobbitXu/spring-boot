@@ -4,20 +4,23 @@ import lombok.Data;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by admin on 2018/8/28.
  */
 @Data
-//@Entity
-//@Table(name="t_pub_sequence")
-public class MysqlSequenceBo {
+@Entity
+@Table(name="t_pub_sequence")
+public class MysqlSequenceBo implements Serializable {
 
     /**
      * seq名
      */
+    @Id
     private String seqName;
     /**
      * 当前值

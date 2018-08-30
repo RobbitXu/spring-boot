@@ -2,6 +2,7 @@ package com.spring.factory;
 
 import com.spring.bean.MysqlSequenceBo;
 import com.spring.mapper.MysqlSequenceDAO;
+import com.spring.repository.MysqlSequenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -25,6 +26,10 @@ public class MysqlSequenceFactory {
 
     @Autowired
     private MysqlSequenceDAO msqlSequenceDAO;
+
+//    @Autowired
+//    MysqlSequenceRepository mysqlSequenceRepository ;
+
     /** 单个sequence初始化乐观锁更新失败重试次数 */
     @Value("${seq.init.retry:5}")
     private int initRetryNum;
@@ -47,6 +52,7 @@ public class MysqlSequenceFactory {
     private void initAll(){
         try {
             lock.lock();
+//            List<MysqlSequenceBo> boList = mysqlSequenceRepository.findAll();
             List<MysqlSequenceBo> boList = msqlSequenceDAO.getAll();
             if (boList == null) {
                 throw new IllegalArgumentException("The sequenceRecord is null!");
@@ -77,7 +83,8 @@ public class MysqlSequenceFactory {
                 if (holder != null){
                     return holder.getNextVal();
                 }
-                MysqlSequenceBo bo = msqlSequenceDAO.getSequence(seqName);
+//                MysqlSequenceBo bo = mysqlSequenceRepository.findBySeqName(seqName);
+                MysqlSequenceBo bo =  msqlSequenceDAO.getSequence(seqName);
                 holder = new MysqlSequenceHolder(msqlSequenceDAO, bo,initRetryNum,getRetryNum);
                 holder.init();
                 holderMap.put(seqName, holder);

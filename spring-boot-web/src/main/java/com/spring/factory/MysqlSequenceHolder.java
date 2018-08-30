@@ -3,6 +3,7 @@ package com.spring.factory;
 import com.spring.bean.MysqlSequenceBo;
 import com.spring.bean.SequenceRange;
 import com.spring.mapper.MysqlSequenceDAO;
+import com.spring.repository.MysqlSequenceRepository;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -19,6 +20,7 @@ public class MysqlSequenceHolder {
 
     /** sequenceDao */
     private MysqlSequenceDAO sequenceDAO;
+//    private MysqlSequenceRepository sequenceDAO;
 
     private MysqlSequenceBo sequenceBo;
     /**  */
@@ -40,7 +42,7 @@ public class MysqlSequenceHolder {
      * @return
      * @author coderzl
      */
-    public MysqlSequenceHolder(MysqlSequenceDAO sequenceDAO, MysqlSequenceBo sequenceBo,int initRetryNum,int getRetryNum) {
+    public MysqlSequenceHolder(MysqlSequenceDAO sequenceDAO, MysqlSequenceBo sequenceBo, int initRetryNum, int getRetryNum) {
         this.sequenceDAO = sequenceDAO;
         this.sequenceBo = sequenceBo;
         this.initRetryNum = initRetryNum;
@@ -138,7 +140,9 @@ public class MysqlSequenceHolder {
             if(!checkCurrentValue(newValue,curBo)){
                 newValue = resetCurrentValue(curBo);
             }
-            int result = sequenceDAO.updSequence(sequenceBo.getSeqName(),curBo.getSeqValue(),newValue);
+
+            int result = sequenceDAO.updSequence(newValue,sequenceBo.getSeqName(),curBo.getSeqValue());
+
             if(result > 0){
                 sequenceRange = new SequenceRange(curBo.getSeqValue(),newValue - 1);
                 curBo.setSeqValue(newValue);
@@ -198,7 +202,7 @@ public class MysqlSequenceHolder {
             if(!checkCurrentValue(newValue,curBo)){
                 newValue = resetCurrentValue(curBo);
             }
-            int result = sequenceDAO.updSequence(sequenceBo.getSeqName(),curBo.getSeqValue(),newValue);
+            int result = sequenceDAO.updSequence(newValue,sequenceBo.getSeqName(),curBo.getSeqValue());
             if(result > 0){
                 sequenceRange = new SequenceRange(curBo.getSeqValue(),newValue - 1);
                 curBo.setSeqValue(newValue);

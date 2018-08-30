@@ -5,6 +5,8 @@ import com.spring.service.MysqlSequence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 /**
  * Created by admin on 2018/8/28.
  */
@@ -15,6 +17,6 @@ public class MysqlSequenceImpl implements MysqlSequence {
 
     @Override
     public String nextVal(String seqName) {
-        return null;
+        return Objects.toString(mysqlSequenceFactory.getNextVal(seqName));
     }
 }

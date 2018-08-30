@@ -16,11 +16,11 @@ public interface MysqlSequenceDAO {
      */
     int createSequence(MysqlSequenceBo bo);
 
-    int updSequence(@Param("seqName") String seqName, @Param("oldValue") long oldValue, @Param("newValue") long newValue);
+    int updSequence(@Param("newSequence") Long newSequence,@Param("seqName") String seqName, @Param("oldValue") Long oldValue);
 
     int delSequence(@Param("seqName") String seqName);
 
-    MysqlSequenceBo getSequence(@Param("seqName") String seqName);
+    MysqlSequenceBo getSequence(@Param("name") String seqName);
 
     List<MysqlSequenceBo> getAll();
 

@@ -21,10 +21,10 @@
         #{minValue,jdbcType=BIGINT}, #{maxValue,jdbcType=BIGINT}, #{step,jdbcType=BIGINT},
         now())
     </insert>
-    <update id="updSequence" parameterType="com.spring.bean.MysqlSequenceBo" >
+    <update id="updSequence" >
         update t_pub_sequence
-        set SEQ_VALUE = #{newValue,jdbcType=BIGINT}
-        where SEQ_NAME = #{seqName,jdbcType=VARCHAR} and SEQ_VALUE = #{oldValue,jdbcType=BIGINT}
+        set `SEQ_VALUE` = #{0}
+        where `SEQ_NAME` = #{1} and `SEQ_VALUE` = #{2}
     </update>
 
     <select id="getAll" resultMap="BaseResultMap" >
@@ -35,7 +35,7 @@
     <select id="getSequence" resultMap="BaseResultMap" >
         select SEQ_NAME, SEQ_VALUE, MIN_VALUE, MAX_VALUE, STEP
         from t_pub_sequence
-        where SEQ_NAME = #{seqName,jdbcType=VARCHAR}
+        where SEQ_NAME = #{name,jdbcType=VARCHAR}
     </select>
 
 </mapper>
